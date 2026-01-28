@@ -5,8 +5,8 @@ document.addEventListener("DOMContentLoaded", () => {
 function calculateFlames() {
   let name1 = document.getElementById("name1").value.trim();
   let name2 = document.getElementById("name2").value.trim();
-  let other = document.getElementById("otherNames").value.trim();
-  let funny = document.getElementById("funnyText").value.trim();
+  // let other = document.getElementById("otherNames").value.trim();
+  // let funny = document.getElementById("funnyText").value.trim();
 
   if (name1 === "" || name2 === "") {
     alert("⚠️ Please enter both names!");
@@ -22,8 +22,8 @@ function calculateFlames() {
   // Update Card Content
   document.getElementById("namesLine").innerText = `${name1} ❤️ ${name2}`;
   document.getElementById("cardResult").innerText = result;
-  document.getElementById("otherNamesCard").innerText = other ? `Other Names: ${other}` : "";
-  document.getElementById("funnyTextCard").innerText = funny ? `😂 ${funny}` : "";
+  // document.getElementById("otherNamesCard").innerText = other ? `Other Names: ${other}` : "";
+  // document.getElementById("funnyTextCard").innerText = funny ? `😂 ${funny}` : "";
   document.getElementById("resultCard").style.display = "block";
 }
 
