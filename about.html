@@ -1,0 +1,234 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Flames — Play FLAMES (Friendship/Love/Adore) | Instant Result & Share</title>
+  <meta name="description" content="Play the classic FLAMES game online — instant results, beautiful shareable card, mobile-friendly, SEO-optimized, and perfect for social media sharing." />
+  <meta name="keywords" content="FLAMES game, friendship test, love calculator, relationship quiz, flames result" />
+  <link rel="canonical" href="https://yourdomain.com/" />
+  <meta name="robots" content="index, follow" />
+  <meta property="og:title" content="Flames — Play FLAMES Game Online" />
+  <meta property="og:description" content="Find out your FLAMES result instantly — share on WhatsApp, Facebook, Instagram, and Snapchat!" />
+  <meta property="og:image" content="https://yourdomain.com/og-image.png" />
+  <meta property="og:type" content="website" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"/>
+  <style>
+    :root {
+      --bg: #0d1117;
+      --card: #161b22;
+      --accent: #ff7f50;
+      --text: #e6edf3;
+      --muted: #9ba3af;
+      --radius: 16px;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: 'Poppins', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      padding: 20px;
+    }
+    .container {
+      max-width: 700px;
+      width: 100%;
+      background: var(--card);
+      border-radius: var(--radius);
+      padding: 25px;
+      box-shadow: 0 4px 30px rgba(0, 0, 0, 0.4);
+      text-align: center;
+    }
+    h1 {
+      color: var(--accent);
+      font-size: 1.8rem;
+      margin-bottom: 15px;
+    }
+    p.lead {
+      color: var(--muted);
+      margin-bottom: 25px;
+      font-size: 0.95rem;
+    }
+    form {
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+    }
+    input[type="text"] {
+      padding: 12px;
+      border: 1px solid #30363d;
+      border-radius: var(--radius);
+      background: #0d1117;
+      color: var(--text);
+      font-size: 1rem;
+      outline: none;
+      width: 100%;
+    }
+    input[type="text"]:focus {
+      border-color: var(--accent);
+      box-shadow: 0 0 5px var(--accent);
+    }
+    button {
+      background: var(--accent);
+      color: #fff;
+      border: none;
+      padding: 12px;
+      border-radius: var(--radius);
+      cursor: pointer;
+      font-size: 1rem;
+      transition: 0.3s;
+    }
+    button:hover {
+      background: #ff956a;
+    }
+    .result-card {
+      margin-top: 25px;
+      padding: 20px;
+      background: #1c2128;
+      border-radius: var(--radius);
+      text-align: center;
+      box-shadow: 0 2px 12px rgba(255, 127, 80, 0.2);
+    }
+    .result-card h2 {
+      color: var(--accent);
+      font-size: 1.6rem;
+      margin-bottom: 10px;
+    }
+    .share-buttons {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 12px;
+      margin-top: 15px;
+    }
+    .share-btn {
+      background: #21262d;
+      color: var(--text);
+      border: 1px solid #30363d;
+      border-radius: 50%;
+      width: 48px;
+      height: 48px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      transition: 0.3s;
+      font-size: 1.3rem;
+    }
+    .share-btn:hover {
+      background: var(--accent);
+      color: #fff;
+      transform: scale(1.1);
+    }
+    footer {
+      text-align: center;
+      margin-top: 20px;
+      font-size: 0.85rem;
+      color: var(--muted);
+    }
+    @media (max-width: 480px) {
+      h1 { font-size: 1.4rem; }
+      input[type="text"] { font-size: 0.95rem; }
+      button { font-size: 0.95rem; }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>🔥 FLAMES Relationship Game</h1>
+    <p class="lead">Find out your connection — Friendship, Love, Affection, Marriage, Enemy or Sibling. Share your fun result instantly!</p>
+
+    <form id="flamesForm">
+      <input type="text" id="name1" placeholder="Enter your name" required>
+      <input type="text" id="name2" placeholder="Enter your partner/friend name" required>
+      <button type="button" onclick="calculateFlames()">Check Result</button>
+    </form>
+
+    <div id="result" class="result-card" style="display:none;">
+      <h2 id="flamesResult"></h2>
+      <p id="flamesMeaning"></p>
+      <div class="share-buttons">
+        <button class="share-btn" onclick="shareOnWhatsApp()"><i class="fab fa-whatsapp"></i></button>
+        <button class="share-btn" onclick="shareOnFacebook()"><i class="fab fa-facebook-f"></i></button>
+        <button class="share-btn" onclick="shareOnInstagram()"><i class="fab fa-instagram"></i></button>
+        <button class="share-btn" onclick="shareOnSnapchat()"><i class="fab fa-snapchat-ghost"></i></button>
+      </div>
+    </div>
+
+    <footer>© <span id="year"></span> Flames Game | Made with ❤️</footer>
+  </div>
+
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    function calculateFlames() {
+      const name1 = document.getElementById('name1').value.trim().toLowerCase();
+      const name2 = document.getElementById('name2').value.trim().toLowerCase();
+      if (!name1 || !name2) return alert('Please enter both names!');
+
+      let arr1 = name1.split('');
+      let arr2 = name2.split('');
+      for (let i = arr1.length - 1; i >= 0; i--) {
+        const idx = arr2.indexOf(arr1[i]);
+        if (idx !== -1) {
+          arr1.splice(i, 1);
+          arr2.splice(idx, 1);
+        }
+      }
+      const count = arr1.length + arr2.length;
+      const flames = ['F', 'L', 'A', 'M', 'E', 'S'];
+      let index = 0;
+      while (flames.length > 1) {
+        index = (count + index - 1) % flames.length;
+        flames.splice(index, 1);
+      }
+      const result = flames[0];
+      const meaning = {
+        F: 'Friendship — You share a fun and friendly bond!',
+        L: 'Love — Sparks are flying! 💖',
+        A: 'Affection — You deeply care for each other.',
+        M: 'Marriage — A strong connection with future potential 💍',
+        E: 'Enemies — Uh-oh! You might clash sometimes 😅',
+        S: 'Siblings — You care like family 👨‍👩‍👧'
+      };
+
+      document.getElementById('flamesResult').textContent = result + ' — ' + meaning[result].split('—')[0];
+      document.getElementById('flamesMeaning').textContent = meaning[result];
+      document.getElementById('result').style.display = 'block';
+    }
+
+    function shareOnWhatsApp() {
+      const result = document.getElementById('flamesResult').textContent;
+      const text = encodeURIComponent(`My FLAMES result says: ${result}! Curious? Play and find your connection ➡️ https://yourdomain.com`);
+      window.open(`https://api.whatsapp.com/send?text=${text}`, '_blank');
+      reloadAfterShare();
+    }
+
+    function shareOnFacebook() {
+      const url = encodeURIComponent('https://yourdomain.com');
+      window.open(`https://www.facebook.com/sharer/sharer.php?u=${url}`, '_blank');
+      reloadAfterShare();
+    }
+
+    function shareOnInstagram() {
+      alert('To share on Instagram, take a screenshot of your result and post it as a story with the caption: “Play FLAMES & discover your bond ❤️ https://yourdomain.com”');
+      reloadAfterShare();
+    }
+
+    function shareOnSnapchat() {
+      alert('To share on Snapchat, take a screenshot of your result and share it as a story with the text: “Play FLAMES & discover your bond ❤️ https://yourdomain.com”');
+      reloadAfterShare();
+    }
+
+    function reloadAfterShare() {
+      setTimeout(() => {
+        location.reload();
+      }, 1000);
+    }
+  </script>
+</body>
+</html>
